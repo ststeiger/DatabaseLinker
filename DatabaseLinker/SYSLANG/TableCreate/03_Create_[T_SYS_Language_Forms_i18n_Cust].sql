@@ -1,0 +1,22 @@
+
+CREATE TABLE [dbo].[T_SYS_Language_Forms_i18n_Cust](
+	[LANG_i18n_Cust_LANG_UID] [uniqueidentifier] NOT NULL,
+	[LANG_i18n_Cust_SYSLANG_LCID] [int] NOT NULL,
+	[LANG_i18n_Cust_Text] [nvarchar](4000) NULL,
+ CONSTRAINT [PK_T_SYS_Language_Forms_i18n_Cust] PRIMARY KEY CLUSTERED 
+(
+	[LANG_i18n_Cust_LANG_UID] ASC,
+	[LANG_i18n_Cust_SYSLANG_LCID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[T_SYS_Language_Forms_i18n_Cust]  WITH CHECK ADD  CONSTRAINT [FK_T_SYS_Language_Forms_i18n_Cust_T_SYS_Language] FOREIGN KEY([LANG_i18n_Cust_SYSLANG_LCID])
+REFERENCES [dbo].[T_SYS_Language] ([SYSLANG_LCID])
+GO
+
+ALTER TABLE [dbo].[T_SYS_Language_Forms_i18n_Cust] CHECK CONSTRAINT [FK_T_SYS_Language_Forms_i18n_Cust_T_SYS_Language]
+GO
+
+
